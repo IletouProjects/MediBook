@@ -5,32 +5,46 @@ import SectionLabel from "./components/SectionLabel";
 const appointmentSteps = [
   {
     number: "01",
-    title: "Décrivez votre besoin",
+    title: "Indiquez votre besoin",
     description:
-      "Sélectionnez une spécialité et indiquez la zone dans laquelle vous souhaitez consulter.",
+      "Choisissez une spécialité et précisez la zone dans laquelle vous souhaitez consulter.",
   },
   {
     number: "02",
-    title: "Consultez les disponibilités",
+    title: "Comparez les créneaux",
     description:
-      "Comparez les créneaux proposés et choisissez celui qui correspond à votre emploi du temps.",
+      "Consultez les disponibilités proposées et sélectionnez l’horaire qui vous convient.",
   },
   {
     number: "03",
-    title: "Confirmez le rendez-vous",
+    title: "Confirmez la consultation",
     description:
-      "Renseignez les informations nécessaires et recevez la confirmation de votre consultation.",
+      "Renseignez les informations nécessaires et recevez le récapitulatif du rendez-vous.",
   },
 ];
 
-const reassurancePoints = [
-  "Informations lisibles avant la réservation",
-  "Créneaux présentés clairement",
-  "Parcours utilisable sur mobile",
-  "Assistance accessible en cas de difficulté",
+const platformBenefits = [
+  {
+    number: "01",
+    title: "Un parcours clair",
+    description:
+      "Chaque écran présente une seule action importante pour éviter de surcharger l’utilisateur.",
+  },
+  {
+    number: "02",
+    title: "Des informations utiles",
+    description:
+      "Les horaires, les spécialités et les lieux de consultation sont présentés avant la validation.",
+  },
+  {
+    number: "03",
+    title: "Une interface accessible",
+    description:
+      "L’expérience reste lisible et utilisable depuis un téléphone, une tablette ou un ordinateur.",
+  },
 ];
 
-const specialities = [
+const specialties = [
   "Médecine générale",
   "Pédiatrie",
   "Cardiologie",
@@ -42,204 +56,244 @@ const specialities = [
 export default function HomePage() {
   return (
     <>
+      {/* HERO */}
       <section className="overflow-hidden bg-white">
-        <div className="mx-auto grid min-h-[680px] max-w-7xl items-center gap-16 px-5 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-20">
+        <div className="mx-auto grid min-h-[690px] max-w-7xl items-center gap-14 px-5 py-16 lg:grid-cols-[1fr_1fr] lg:px-8 lg:py-20">
           <div>
-            <div className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-2 shadow-sm">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#E9E9E9] bg-white px-4 py-2 shadow-[0_5px_18px_rgba(0,0,0,0.07)]">
               <span
                 aria-hidden="true"
-                className="h-2 w-2 rounded-full bg-[#FF7900]"
+                className="h-2 w-2 rounded-full bg-[#FF6B1A]"
               />
 
-              <span className="text-sm font-medium text-slate-600">
-                Organisez votre consultation plus facilement
+              <span className="text-sm font-medium text-[#555555]">
+                Une consultation plus simple à organiser
               </span>
             </div>
 
-            <h1 className="mt-8 max-w-3xl text-4xl font-semibold leading-[1.08] tracking-[-0.045em] text-[#071E3D] sm:text-5xl lg:text-6xl">
-              Trouvez un professionnel de santé adapté à votre besoin.
+            <h1 className="mt-8 max-w-3xl text-4xl font-semibold leading-[1.08] tracking-[-0.045em] text-[#111111] sm:text-5xl lg:text-6xl">
+              Trouvez plus facilement
+              <span className="text-[#FF6B1A]"> le professionnel</span> adapté
+              à votre besoin.
             </h1>
 
-            <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600">
-              Recherchez une spécialité, consultez les créneaux disponibles et
-              préparez votre rendez-vous sans procédure complexe.
+            <p className="mt-6 max-w-xl text-base leading-8 text-[#626262]">
+              Recherchez une spécialité, consultez les disponibilités et
+              organisez votre rendez-vous sans appel ni déplacement inutile.
             </p>
 
             <div className="mt-9 flex flex-col gap-4 sm:flex-row">
               <Link
                 href="/contact"
-                className="rounded-lg bg-[#FF7900] px-7 py-4 text-center font-semibold text-white hover:bg-[#E86E00]"
+                className="inline-flex items-center justify-center gap-3 rounded-full bg-[#FF6B1A] px-7 py-3 font-semibold text-white shadow-[0_10px_25px_rgba(255,107,26,0.28)] hover:bg-[#E95D0D]"
               >
                 Prendre rendez-vous
+
+                <span
+                  aria-hidden="true"
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-lg text-[#FF6B1A]"
+                >
+                  →
+                </span>
               </Link>
 
               <Link
                 href="/services"
-                className="rounded-lg border border-slate-300 bg-white px-7 py-4 text-center font-semibold text-[#071E3D] hover:border-[#071E3D]"
+                className="inline-flex items-center justify-center rounded-full border border-[#DCDCDC] bg-white px-7 py-4 font-semibold text-[#111111] hover:border-[#111111]"
               >
-                Consulter les services
+                Découvrir les services
               </Link>
             </div>
 
-            <div className="mt-12 grid max-w-xl gap-6 border-t border-slate-200 pt-8 sm:grid-cols-3">
-              <div>
-                <p className="text-base font-semibold text-[#071E3D]">
-                  Accessible
-                </p>
-                <p className="mt-2 text-sm leading-6 text-slate-500">
-                  Depuis un téléphone, une tablette ou un ordinateur.
-                </p>
+            <div className="mt-16 flex max-w-lg items-center gap-4">
+              <div className="flex -space-x-3">
+                {["AD", "KM", "SA"].map((initials, index) => (
+                  <div
+                    key={initials}
+                    className={`flex h-11 w-11 items-center justify-center rounded-full border-2 border-white text-xs font-semibold text-[#111111] ${
+                      index === 0
+                        ? "bg-[#F3D8C7]"
+                        : index === 1
+                          ? "bg-[#DCE7E3]"
+                          : "bg-[#F0E1D5]"
+                    }`}
+                  >
+                    {initials}
+                  </div>
+                ))}
               </div>
 
               <div>
-                <p className="text-base font-semibold text-[#071E3D]">
-                  Compréhensible
+                <p className="font-semibold text-[#111111]">
+                  Un parcours pensé pour les patients
                 </p>
-                <p className="mt-2 text-sm leading-6 text-slate-500">
-                  Des étapes courtes et clairement expliquées.
-                </p>
-              </div>
 
-              <div>
-                <p className="text-base font-semibold text-[#071E3D]">
-                  Rassurant
-                </p>
-                <p className="mt-2 text-sm leading-6 text-slate-500">
-                  Les informations essentielles avant la validation.
+                <p className="mt-1 text-sm text-[#626262]">
+                  Lisible, rapide et accessible sur mobile.
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="relative">
+          <div className="relative min-h-[590px]">
             <div
               aria-hidden="true"
-              className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-orange-100 blur-3xl"
+              className="absolute inset-x-14 bottom-8 h-24 rounded-full bg-black/15 blur-3xl"
             />
 
-            <div className="relative rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_25px_80px_rgba(7,30,61,0.13)] sm:p-8">
-              <div className="border-b border-slate-100 pb-6">
-                <p className="text-sm font-semibold text-[#FF7900]">
-                  Recherche de consultation
-                </p>
+            <div className="absolute left-1/2 top-1/2 w-full max-w-[470px] -translate-x-1/2 -translate-y-1/2 rounded-[2.5rem] border border-[#EAEAEA] bg-[#FAFAF8] p-6 shadow-[0_30px_70px_rgba(0,0,0,0.13)]">
+              <div className="rounded-[2rem] bg-white p-7">
+                <div className="border-b border-[#EEEEEE] pb-6">
+                  <p className="text-sm font-semibold text-[#FF6B1A]">
+                    Nouvelle réservation
+                  </p>
 
-                <h2 className="mt-2 text-2xl font-semibold tracking-tight text-[#071E3D]">
-                  De quel professionnel avez-vous besoin ?
-                </h2>
+                  <h2 className="mt-3 text-2xl font-semibold text-[#111111]">
+                    Trouver une consultation
+                  </h2>
 
-                <p className="mt-3 text-sm leading-6 text-slate-500">
-                  Indiquez quelques informations pour afficher les
-                  disponibilités pertinentes.
-                </p>
-              </div>
+                  <p className="mt-3 text-sm leading-6 text-[#626262]">
+                    Renseignez quelques informations pour afficher les créneaux
+                    disponibles.
+                  </p>
+                </div>
 
-              <form className="mt-7 space-y-5">
-                <div>
-                  <label
-                    htmlFor="speciality"
-                    className="mb-2 block text-sm font-medium text-[#071E3D]"
-                  >
-                    Spécialité
-                  </label>
+                <form className="mt-7 space-y-5">
+                  <div>
+                    <label
+                      htmlFor="speciality"
+                      className="mb-2 block text-sm font-medium text-[#222222]"
+                    >
+                      Spécialité
+                    </label>
 
-                  <select
-                    id="speciality"
-                    name="speciality"
-                    defaultValue=""
-                    className="w-full rounded-lg border border-slate-200 bg-white px-4 py-4 text-slate-700 outline-none focus:border-[#FF7900] focus:ring-4 focus:ring-orange-50"
-                  >
-                    <option value="" disabled>
-                      Sélectionner une spécialité
-                    </option>
-
-                    {specialities.map((speciality) => (
-                      <option key={speciality} value={speciality}>
-                        {speciality}
+                    <select
+                      id="speciality"
+                      name="speciality"
+                      defaultValue=""
+                      className="w-full rounded-xl border border-[#E2E2E2] bg-white px-4 py-4 text-[#555555] outline-none focus:border-[#FF6B1A] focus:ring-4 focus:ring-orange-50"
+                    >
+                      <option value="" disabled>
+                        Sélectionner une spécialité
                       </option>
-                    ))}
-                  </select>
-                </div>
 
-                <div>
-                  <label
-                    htmlFor="location"
-                    className="mb-2 block text-sm font-medium text-[#071E3D]"
+                      {specialties.map((specialty) => (
+                        <option key={specialty} value={specialty}>
+                          {specialty}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="location"
+                      className="mb-2 block text-sm font-medium text-[#222222]"
+                    >
+                      Ville ou quartier
+                    </label>
+
+                    <input
+                      id="location"
+                      name="location"
+                      type="text"
+                      placeholder="Exemple : Lomé, Tokoin"
+                      className="w-full rounded-xl border border-[#E2E2E2] px-4 py-4 text-[#555555] outline-none placeholder:text-[#A0A0A0] focus:border-[#FF6B1A] focus:ring-4 focus:ring-orange-50"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="appointment-date"
+                      className="mb-2 block text-sm font-medium text-[#222222]"
+                    >
+                      Date souhaitée
+                    </label>
+
+                    <input
+                      id="appointment-date"
+                      name="appointmentDate"
+                      type="date"
+                      className="w-full rounded-xl border border-[#E2E2E2] px-4 py-4 text-[#555555] outline-none focus:border-[#FF6B1A] focus:ring-4 focus:ring-orange-50"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full rounded-full bg-[#111111] px-5 py-4 font-semibold text-white hover:bg-[#2A2A2A]"
                   >
-                    Ville ou quartier
-                  </label>
+                    Rechercher les disponibilités
+                  </button>
+                </form>
+              </div>
+            </div>
 
-                  <input
-                    id="location"
-                    name="location"
-                    type="text"
-                    placeholder="Exemple : Lomé, Tokoin"
-                    className="w-full rounded-lg border border-slate-200 px-4 py-4 text-slate-700 outline-none placeholder:text-slate-400 focus:border-[#FF7900] focus:ring-4 focus:ring-orange-50"
-                  />
-                </div>
+            <div className="absolute left-0 top-16 hidden rounded-full border border-[#E9E9E9] bg-white px-4 py-3 text-sm font-medium text-[#333333] shadow-[0_8px_22px_rgba(0,0,0,0.1)] sm:block">
+              Professionnels disponibles
+            </div>
 
-                <div>
-                  <label
-                    htmlFor="appointment-date"
-                    className="mb-2 block text-sm font-medium text-[#071E3D]"
-                  >
-                    Date souhaitée
-                  </label>
+            <div className="absolute right-0 top-32 hidden rounded-full border border-[#E9E9E9] bg-white px-4 py-3 text-sm font-medium text-[#333333] shadow-[0_8px_22px_rgba(0,0,0,0.1)] sm:block">
+              Créneaux actualisés
+            </div>
 
-                  <input
-                    id="appointment-date"
-                    name="appointmentDate"
-                    type="date"
-                    className="w-full rounded-lg border border-slate-200 px-4 py-4 text-slate-700 outline-none focus:border-[#FF7900] focus:ring-4 focus:ring-orange-50"
-                  />
-                </div>
+            <div className="absolute bottom-24 left-0 hidden rounded-full border border-[#E9E9E9] bg-white px-4 py-3 text-sm font-medium text-[#333333] shadow-[0_8px_22px_rgba(0,0,0,0.1)] sm:block">
+              Réservation guidée
+            </div>
 
-                <button
-                  type="submit"
-                  className="w-full rounded-lg bg-[#071E3D] px-5 py-4 font-semibold text-white hover:bg-[#0C315F]"
-                >
-                  Rechercher des disponibilités
-                </button>
-              </form>
-
-              <p className="mt-5 text-center text-xs leading-5 text-slate-500">
-                Cette recherche ne remplace pas une prise en charge médicale
-                urgente.
-              </p>
+            <div className="absolute bottom-10 right-0 hidden rounded-full border border-[#E9E9E9] bg-white px-4 py-3 text-sm font-medium text-[#333333] shadow-[0_8px_22px_rgba(0,0,0,0.1)] sm:block">
+              Utilisable sur mobile
             </div>
           </div>
         </div>
       </section>
 
-      <section className="border-y border-slate-200 bg-[#F6F8FB] py-24">
+      {/* FONCTIONNEMENT */}
+      <section className="border-y border-[#E9E9E9] bg-[#FAFAF8] py-24">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="max-w-2xl">
-            <SectionLabel>Fonctionnement</SectionLabel>
+          <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+            <div className="max-w-2xl">
+              <SectionLabel>Comment ça fonctionne</SectionLabel>
 
-            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.035em] text-[#071E3D] sm:text-4xl">
-              Trois étapes pour organiser une consultation
-            </h2>
+              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.035em] text-[#111111] sm:text-4xl">
+                Un parcours simple, du besoin au rendez-vous
+              </h2>
 
-            <p className="mt-5 leading-7 text-slate-600">
-              Le parcours limite les informations demandées et présente une
-              seule décision importante à chaque étape.
-            </p>
+              <p className="mt-5 leading-7 text-[#626262]">
+                Chaque étape est présentée clairement pour permettre au patient
+                d’avancer sans hésitation.
+              </p>
+            </div>
+
+            <Link
+              href="/services"
+              className="inline-flex w-fit border-b border-[#111111] pb-1 text-sm font-semibold text-[#111111] hover:border-[#FF6B1A] hover:text-[#FF6B1A]"
+            >
+              Consulter tous les services
+            </Link>
           </div>
 
           <div className="mt-14 grid gap-6 md:grid-cols-3">
             {appointmentSteps.map((step) => (
               <article
                 key={step.number}
-                className="rounded-2xl border border-slate-200 bg-white p-7"
+                className="rounded-2xl border border-[#E9E9E9] bg-white p-7 transition hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(0,0,0,0.07)]"
               >
-                <span className="text-sm font-semibold text-[#FF7900]">
-                  {step.number}
-                </span>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm font-semibold text-[#FF6B1A]">
+                    {step.number}
+                  </span>
 
-                <h3 className="mt-8 text-xl font-semibold text-[#071E3D]">
+                  <span
+                    aria-hidden="true"
+                    className="h-px w-12 bg-[#E4E4E4]"
+                  />
+                </div>
+
+                <h3 className="mt-10 text-xl font-semibold text-[#111111]">
                   {step.title}
                 </h3>
 
-                <p className="mt-3 leading-7 text-slate-600">
+                <p className="mt-4 leading-7 text-[#626262]">
                   {step.description}
                 </p>
               </article>
@@ -248,60 +302,213 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* BÉNÉFICES */}
       <section className="bg-white py-24">
-        <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 lg:grid-cols-2 lg:px-8">
-          <div className="rounded-3xl bg-[#071E3D] p-8 sm:p-10">
-            <SectionLabel light>Avant la consultation</SectionLabel>
+        <div className="mx-auto grid max-w-7xl items-center gap-16 px-5 lg:grid-cols-2 lg:px-8">
+          <div className="relative rounded-[2rem] bg-[#F5F5F2] p-8 sm:p-10">
+            <div className="rounded-[1.5rem] border border-[#E6E6E2] bg-white p-7 shadow-[0_18px_45px_rgba(0,0,0,0.06)]">
+              <p className="text-sm font-semibold text-[#FF6B1A]">
+                Votre prochain rendez-vous
+              </p>
 
-            <h2 className="mt-4 text-3xl font-semibold leading-tight tracking-[-0.035em] text-white">
-              Des informations utiles, présentées sans surcharge
-            </h2>
+              <div className="mt-6 border-y border-[#EEEEEE] py-6">
+                <p className="text-sm text-[#777777]">Spécialité</p>
+                <p className="mt-2 text-lg font-semibold text-[#111111]">
+                  Médecine générale
+                </p>
+              </div>
 
-            <p className="mt-5 leading-7 text-slate-300">
-              Le patient doit pouvoir vérifier les éléments essentiels sans
-              parcourir plusieurs écrans difficiles à comprendre.
-            </p>
-
-            <div className="mt-8 divide-y divide-white/10 border-y border-white/10">
-              {reassurancePoints.map((point) => (
-                <div key={point} className="flex items-center gap-4 py-4">
-                  <span
-                    aria-hidden="true"
-                    className="h-2 w-2 shrink-0 rounded-full bg-[#FF7900]"
-                  />
-
-                  <p className="text-sm text-slate-200">{point}</p>
+              <div className="grid gap-6 border-b border-[#EEEEEE] py-6 sm:grid-cols-2">
+                <div>
+                  <p className="text-sm text-[#777777]">Date</p>
+                  <p className="mt-2 font-semibold text-[#111111]">
+                    Mardi 28 juillet
+                  </p>
                 </div>
-              ))}
+
+                <div>
+                  <p className="text-sm text-[#777777]">Heure</p>
+                  <p className="mt-2 font-semibold text-[#111111]">15 h 30</p>
+                </div>
+              </div>
+
+              <div className="pt-6">
+                <p className="text-sm text-[#777777]">Lieu de consultation</p>
+                <p className="mt-2 font-semibold text-[#111111]">
+                  Centre médical, Lomé
+                </p>
+              </div>
+
+              <button
+                type="button"
+                className="mt-8 w-full rounded-full bg-[#111111] px-5 py-4 font-semibold text-white hover:bg-[#2A2A2A]"
+              >
+                Consulter le récapitulatif
+              </button>
+            </div>
+
+            <div className="absolute -right-4 top-10 hidden rounded-full border border-[#E9E9E9] bg-white px-4 py-3 text-sm font-medium text-[#333333] shadow-[0_8px_22px_rgba(0,0,0,0.1)] sm:block">
+              Informations vérifiables
+            </div>
+
+            <div className="absolute -bottom-5 left-10 hidden rounded-full border border-[#E9E9E9] bg-white px-4 py-3 text-sm font-medium text-[#333333] shadow-[0_8px_22px_rgba(0,0,0,0.1)] sm:block">
+              Confirmation claire
             </div>
           </div>
 
           <div>
-            <SectionLabel>Une expérience plus humaine</SectionLabel>
+            <SectionLabel>Une expérience plus rassurante</SectionLabel>
 
-            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.035em] text-[#071E3D] sm:text-4xl">
-              Une interface conçue pour rassurer, pas pour impressionner
+            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.035em] text-[#111111] sm:text-4xl">
+              Les informations importantes restent visibles
             </h2>
 
-            <p className="mt-6 leading-8 text-slate-600">
-              La plateforme privilégie la lisibilité, un vocabulaire simple et
-              des actions clairement identifiables. Chaque écran aide
-              l’utilisateur à comprendre ce qu’il doit faire et pourquoi
-              certaines informations sont demandées.
+            <p className="mt-6 leading-8 text-[#626262]">
+              Avant de confirmer, le patient retrouve la spécialité, la date,
+              l’heure et le lieu de la consultation dans un récapitulatif
+              simple.
             </p>
 
-            <p className="mt-5 leading-8 text-slate-600">
-              Les couleurs, les espacements et les contrastes servent
-              directement le parcours du patient plutôt que de multiplier les
-              effets visuels.
-            </p>
+            <div className="mt-10 divide-y divide-[#E9E9E9] border-y border-[#E9E9E9]">
+              {platformBenefits.map((benefit) => (
+                <article
+                  key={benefit.number}
+                  className="grid gap-4 py-6 sm:grid-cols-[50px_1fr]"
+                >
+                  <span className="text-sm font-semibold text-[#FF6B1A]">
+                    {benefit.number}
+                  </span>
+
+                  <div>
+                    <h3 className="font-semibold text-[#111111]">
+                      {benefit.title}
+                    </h3>
+
+                    <p className="mt-2 text-sm leading-6 text-[#626262]">
+                      {benefit.description}
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ARTICLES */}
+      <section className="border-y border-[#E9E9E9] bg-[#FAFAF8] py-24">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <div className="grid items-end gap-8 lg:grid-cols-[1fr_auto]">
+            <div className="max-w-2xl">
+              <SectionLabel>Ressources</SectionLabel>
+
+              <h2 className="mt-4 text-3xl font-semibold tracking-[-0.035em] text-[#111111] sm:text-4xl">
+                Des articles pour mieux préparer votre parcours
+              </h2>
+
+              <p className="mt-5 leading-7 text-[#626262]">
+                Découvrez des contenus pédagogiques et des informations utiles
+                avant votre consultation.
+              </p>
+            </div>
 
             <Link
-              href="/about"
-              className="mt-8 inline-flex border-b border-[#071E3D] pb-1 font-semibold text-[#071E3D] hover:border-[#FF7900] hover:text-[#FF7900]"
+              href="/blog"
+              className="inline-flex w-fit rounded-full border border-[#DCDCDC] bg-white px-6 py-3 font-semibold text-[#111111] hover:border-[#111111]"
             >
-              Lire la présentation du projet
+              Voir les articles
             </Link>
+          </div>
+
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {[
+              {
+                number: "01",
+                title: "Préparer les informations utiles",
+                description:
+                  "Identifiez les informations qui permettront au professionnel de mieux comprendre votre demande.",
+              },
+              {
+                number: "02",
+                title: "Choisir une spécialité",
+                description:
+                  "Comprenez comment sélectionner le professionnel correspondant à votre besoin.",
+              },
+              {
+                number: "03",
+                title: "Organiser votre disponibilité",
+                description:
+                  "Choisissez un créneau compatible avec votre emploi du temps et vos contraintes.",
+              },
+            ].map((article) => (
+              <article
+                key={article.number}
+                className="rounded-2xl border border-[#E9E9E9] bg-white p-7"
+              >
+                <span className="text-sm font-semibold text-[#FF6B1A]">
+                  Article {article.number}
+                </span>
+
+                <h3 className="mt-8 text-xl font-semibold text-[#111111]">
+                  {article.title}
+                </h3>
+
+                <p className="mt-4 leading-7 text-[#626262]">
+                  {article.description}
+                </p>
+
+                <Link
+                  href="/blog"
+                  className="mt-8 inline-flex border-b border-[#111111] pb-1 text-sm font-semibold text-[#111111] hover:border-[#FF6B1A] hover:text-[#FF6B1A]"
+                >
+                  Lire les publications
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* APPEL À L’ACTION */}
+      <section className="bg-white py-24">
+        <div className="mx-auto max-w-7xl px-5 lg:px-8">
+          <div className="relative overflow-hidden rounded-[2rem] bg-[#111111] px-7 py-14 text-white sm:px-12 lg:px-16">
+            <div
+              aria-hidden="true"
+              className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#FF6B1A]/20 blur-3xl"
+            />
+
+            <div className="relative flex flex-col items-start justify-between gap-10 lg:flex-row lg:items-center">
+              <div className="max-w-2xl">
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#FF8E50]">
+                  Commencer une réservation
+                </p>
+
+                <h2 className="mt-4 text-3xl font-semibold leading-tight tracking-[-0.035em] sm:text-4xl">
+                  Organisez votre prochaine consultation sans démarche
+                  compliquée.
+                </h2>
+
+                <p className="mt-5 leading-7 text-[#C8C8C8]">
+                  Décrivez votre besoin et accédez aux informations nécessaires
+                  pour avancer.
+                </p>
+              </div>
+
+              <Link
+                href="/contact"
+                className="inline-flex shrink-0 items-center gap-3 rounded-full bg-[#FF6B1A] px-7 py-3 font-semibold text-white hover:bg-[#E95D0D]"
+              >
+                Prendre rendez-vous
+
+                <span
+                  aria-hidden="true"
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#FF6B1A]"
+                >
+                  →
+                </span>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
