@@ -1,162 +1,192 @@
-import type { Metadata } from "next";
-import PageHero from "../components/PageHero";
+"use client";
+
+import {
+  ChangeEvent,
+  FormEvent,
+  useState,
+} from "react";
+import { ContactApiResponse, ContactFormData } from "../types/contact";
 
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description:
-    "Contactez MediBook pour obtenir de l’aide ou poser une question.",
+
+const initialFormData: ContactFormData = {
+  name: "",
+  email: "",
+  subject: "",
+  message: "",
 };
 
+type FormStatus = "idle" | "loading" | "success" | "error";
+
 export default function ContactPage() {
+  const [formData, setFormData] =
+    useState<ContactFormData>(initialFormData);
+
+  const [fieldErrors, setFieldErrors] = useState<
+    Partial<Record<keyof ContactFormData, string>>
+  >({});
+
+  const [status, setStatus] =
+    useState<FormStatus>("idle");
+
+  const [feedbackMessage, setFeedbackMessage] =
+    useState("");
+
+  function handleChange(
+    event: ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement
+    >,
+  ) {
+    const { name, value } = event.target;
+
+    setFormData((currentData) => ({
+      ...currentData,
+      [name]: value,
+    }));
+
+    setFieldErrors((currentErrors) => ({
+      ...currentErrors,
+      [name]: undefined,
+    }));
+  }
+
+  async function handleSubmit(
+    event: FormEvent<HTMLFormElement>,
+  ) {
+    event.preventDefault();
+
+    setStatus("loading");
+    setFeedbackMessage("");
+    setFieldErrors({});
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result =
+        (await response.json()) as ContactApiResponse;
+
+      if (!response.ok) {
+        setStatus("error");
+        setFeedbackMessage(result.message);
+        setFieldErrors(result.errors ?? {});
+        return;
+      }
+
+      setStatus("success");
+      setFeedbackMessage(result.message);
+      setFormData(initialFormData);
+    } catch (error) {
+      console.error(
+        "Erreur pendant l’envoi du formulaire :",
+        error,
+      );
+
+      setStatus("error");
+      setFeedbackMessage(
+        "Une erreur réseau empêche l’envoi du message.",
+      );
+    }
+  }
+
+  const isSubmitting = status === "loading";
+
   return (
-    <>
-      <PageHero
-        label="Contact"
-        title="Une question sur votre parcours de réservation ?"
-        description="Décrivez votre besoin et l’équipe vous répondra avec les informations nécessaires."
-      />
+    <main className="bg-[#FAFAF8]">
+      <section className="border-b border-[#E9E9E9] bg-white">
+        <div className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
+          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#FF6B1A]">
+            Contact
+          </p>
 
-      <section className="bg-[#F6F8FB] py-20 sm:py-24">
-        <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[0.78fr_1.22fr] lg:px-8">
-          <aside>
-            <h2 className="text-2xl font-semibold tracking-tight text-[#071E3D]">
-              Informations pratiques
-            </h2>
+          <h1 className="mt-5 max-w-3xl text-4xl font-semibold tracking-[-0.04em] text-[#111111] sm:text-5xl lg:text-6xl">
+            Une question concernant votre parcours de soins ?
+          </h1>
 
-            <p className="mt-4 leading-7 text-slate-600">
-              Le formulaire peut être utilisé pour poser une question, signaler
-              une difficulté ou demander des informations sur une réservation.
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-[#626262]">
+            Décrivez votre besoin. L’équipe MediBook vous
+            répondra avec les informations utiles.
+          </p>
+        </div>
+      </section>
+
+      <section className="py-20 lg:py-24">
+        <div className="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#FF6B1A]">
+              Assistance
             </p>
 
-            <div className="mt-10 divide-y divide-slate-200 border-y border-slate-200">
-              <div className="py-6">
-                <p className="text-sm font-medium text-slate-500">
-                  Adresse électronique
-                </p>
+            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] text-[#111111]">
+              Parlons de votre demande.
+            </h2>
 
-                <p className="mt-2 font-semibold text-[#071E3D]">
-                  support@medibook.tg
-                </p>
-              </div>
+            <p className="mt-5 max-w-md leading-7 text-[#626262]">
+              Ce formulaire est destiné aux questions générales
+              concernant MediBook. Il ne remplace pas une
+              consultation médicale ou un service d’urgence.
+            </p>
 
-              <div className="py-6">
-                <p className="text-sm font-medium text-slate-500">
-                  Localisation
-                </p>
+            <div className="mt-8 rounded-2xl border border-[#E9E9E9] bg-white p-6">
+              <p className="text-sm font-semibold text-[#111111]">
+                Informations importantes
+              </p>
 
-                <p className="mt-2 font-semibold text-[#071E3D]">Lomé, Togo</p>
-              </div>
-
-              <div className="py-6">
-                <p className="text-sm font-medium text-slate-500">
-                  Disponibilité de l’assistance
-                </p>
-
-                <p className="mt-2 font-semibold text-[#071E3D]">
-                  Du lundi au samedi
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-8 rounded-2xl border border-orange-200 bg-orange-50 p-5">
-              <p className="text-sm leading-6 text-slate-700">
-                En cas d’urgence médicale, contactez directement un service
-                d’urgence ou rendez-vous dans l’établissement de santé le plus
-                proche.
+              <p className="mt-3 text-sm leading-6 text-[#626262]">
+                Évitez de transmettre des informations médicales
+                sensibles ou confidentielles dans ce formulaire.
               </p>
             </div>
-          </aside>
+          </div>
 
-          <form className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm sm:p-10">
+          <form
+            onSubmit={handleSubmit}
+            noValidate
+            className="rounded-3xl border border-[#E9E9E9] bg-white p-6 shadow-[0_20px_60px_rgba(17,17,17,0.06)] sm:p-8"
+          >
             <div className="grid gap-6 sm:grid-cols-2">
-              <div>
-                <label
-                  htmlFor="first-name"
-                  className="mb-2 block text-sm font-medium text-[#071E3D]"
-                >
-                  Prénom
-                </label>
+              <FormField
+                id="name"
+                label="Nom complet"
+                value={formData.name}
+                error={fieldErrors.name}
+                onChange={handleChange}
+                placeholder="Votre nom"
+                autoComplete="name"
+              />
 
-                <input
-                  id="first-name"
-                  name="firstName"
-                  type="text"
-                  autoComplete="given-name"
-                  required
-                  className="w-full rounded-lg border border-slate-200 px-4 py-4 outline-none focus:border-[#FF7900] focus:ring-4 focus:ring-orange-50"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="last-name"
-                  className="mb-2 block text-sm font-medium text-[#071E3D]"
-                >
-                  Nom
-                </label>
-
-                <input
-                  id="last-name"
-                  name="lastName"
-                  type="text"
-                  autoComplete="family-name"
-                  required
-                  className="w-full rounded-lg border border-slate-200 px-4 py-4 outline-none focus:border-[#FF7900] focus:ring-4 focus:ring-orange-50"
-                />
-              </div>
+              <FormField
+                id="email"
+                type="email"
+                label="Adresse e-mail"
+                value={formData.email}
+                error={fieldErrors.email}
+                onChange={handleChange}
+                placeholder="nom@exemple.com"
+                autoComplete="email"
+              />
             </div>
 
             <div className="mt-6">
-              <label
-                htmlFor="email"
-                className="mb-2 block text-sm font-medium text-[#071E3D]"
-              >
-                Adresse électronique
-              </label>
-
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                className="w-full rounded-lg border border-slate-200 px-4 py-4 outline-none focus:border-[#FF7900] focus:ring-4 focus:ring-orange-50"
+              <FormField
+                id="subject"
+                label="Sujet"
+                value={formData.subject}
+                error={fieldErrors.subject}
+                onChange={handleChange}
+                placeholder="Objet de votre demande"
               />
             </div>
 
             <div className="mt-6">
               <label
-                htmlFor="request-type"
-                className="mb-2 block text-sm font-medium text-[#071E3D]"
-              >
-                Motif de la demande
-              </label>
-
-              <select
-                id="request-type"
-                name="requestType"
-                defaultValue=""
-                required
-                className="w-full rounded-lg border border-slate-200 bg-white px-4 py-4 outline-none focus:border-[#FF7900] focus:ring-4 focus:ring-orange-50"
-              >
-                <option value="" disabled>
-                  Sélectionner un motif
-                </option>
-
-                <option value="general">Question générale</option>
-                <option value="appointment">Aide pour un rendez-vous</option>
-                <option value="professional">
-                  Inscription d’un professionnel
-                </option>
-                <option value="technical">Difficulté technique</option>
-              </select>
-            </div>
-
-            <div className="mt-6">
-              <label
                 htmlFor="message"
-                className="mb-2 block text-sm font-medium text-[#071E3D]"
+                className="text-sm font-semibold text-[#111111]"
               >
                 Message
               </label>
@@ -164,45 +194,112 @@ export default function ContactPage() {
               <textarea
                 id="message"
                 name="message"
-                rows={6}
-                required
-                placeholder="Décrivez brièvement votre demande."
-                className="w-full resize-none rounded-lg border border-slate-200 px-4 py-4 outline-none placeholder:text-slate-400 focus:border-[#FF7900] focus:ring-4 focus:ring-orange-50"
+                rows={7}
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Décrivez votre demande..."
+                aria-invalid={Boolean(fieldErrors.message)}
+                aria-describedby={
+                  fieldErrors.message
+                    ? "message-error"
+                    : undefined
+                }
+                className="mt-2 w-full resize-none rounded-2xl border border-[#E2E2E2] bg-white px-4 py-3 text-[#111111] outline-none transition placeholder:text-[#969696] focus:border-[#FF6B1A] focus:ring-4 focus:ring-[#FFF1E8]"
               />
+
+              {fieldErrors.message && (
+                <p
+                  id="message-error"
+                  className="mt-2 text-sm text-red-600"
+                >
+                  {fieldErrors.message}
+                </p>
+              )}
             </div>
 
-            <div className="mt-7 flex items-start gap-3">
-              <input
-                id="consent"
-                name="consent"
-                type="checkbox"
-                required
-                className="mt-1 h-4 w-4 rounded border-slate-300 accent-[#FF7900]"
-              />
-
-              <label
-                htmlFor="consent"
-                className="text-sm leading-6 text-slate-600"
+            {feedbackMessage && (
+              <div
+                role="status"
+                aria-live="polite"
+                className={`mt-6 rounded-2xl border px-4 py-3 text-sm ${
+                  status === "success"
+                    ? "border-green-200 bg-green-50 text-green-800"
+                    : "border-red-200 bg-red-50 text-red-700"
+                }`}
               >
-                J’accepte que les informations saisies soient utilisées pour
-                répondre à ma demande.
-              </label>
-            </div>
+                {feedbackMessage}
+              </div>
+            )}
 
             <button
               type="submit"
-              className="mt-8 w-full rounded-lg bg-[#FF7900] px-6 py-4 font-semibold text-white hover:bg-[#E86E00]"
+              disabled={isSubmitting}
+              className="mt-7 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#FF6B1A] px-6 py-3 font-semibold text-white transition hover:bg-[#E95D0D] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
             >
-              Envoyer la demande
+              {isSubmitting
+                ? "Envoi en cours..."
+                : "Envoyer le message"}
             </button>
-
-            <p className="mt-5 text-center text-xs leading-5 text-slate-500">
-              Ne transmettez pas de données médicales sensibles dans ce
-              formulaire général.
-            </p>
           </form>
         </div>
       </section>
-    </>
+    </main>
+  );
+}
+
+type FormFieldProps = {
+  id: keyof ContactFormData;
+  label: string;
+  value: string;
+  error?: string;
+  type?: string;
+  placeholder?: string;
+  autoComplete?: string;
+  onChange: (
+    event: ChangeEvent<HTMLInputElement>,
+  ) => void;
+};
+
+function FormField({
+  id,
+  label,
+  value,
+  error,
+  type = "text",
+  placeholder,
+  autoComplete,
+  onChange,
+}: FormFieldProps) {
+  return (
+    <div>
+      <label
+        htmlFor={id}
+        className="text-sm font-semibold text-[#111111]"
+      >
+        {label}
+      </label>
+
+      <input
+        id={id}
+        name={id}
+        type={type}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        autoComplete={autoComplete}
+        aria-invalid={Boolean(error)}
+        aria-describedby={error ? `${id}-error` : undefined}
+        className="mt-2 h-12 w-full rounded-2xl border border-[#E2E2E2] bg-white px-4 text-[#111111] outline-none transition placeholder:text-[#969696] focus:border-[#FF6B1A] focus:ring-4 focus:ring-[#FFF1E8]"
+      />
+
+      {error && (
+        <p
+          id={`${id}-error`}
+          className="mt-2 text-sm text-red-600"
+        >
+          {error}
+        </p>
+      )}
+    </div>
   );
 }
