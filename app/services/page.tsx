@@ -3,11 +3,19 @@ import Link from "next/link";
 import PageHero from "../components/PageHero";
 import SectionLabel from "../components/SectionLabel";
 
+// export const metadata: Metadata = {
+//   title: "Services",
+//   description:
+//     "Découvrez les principales fonctionnalités proposées par MediBook.",
+// };
+
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Découvrez les principales fonctionnalités proposées par MediBook.",
+    "Découvrez les services proposés par MediBook pour rechercher des professionnels et organiser vos rendez-vous médicaux.",
 };
+
+
 
 const services = [
   {
@@ -50,7 +58,7 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <>
+    <main>
       <PageHero
         label="Services"
         title="Les fonctions essentielles pour organiser un rendez-vous"
@@ -127,6 +135,6 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 }

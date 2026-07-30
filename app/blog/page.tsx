@@ -11,11 +11,12 @@ export const metadata: Metadata = {
     "Découvrez les articles et ressources proposés par MediBook.",
 };
 
+
 export default async function BlogPage() {
   const articles = await getPosts();
 
   return (
-    <>
+    <main>
       <PageHero
         label="Articles"
         title="Des ressources pour mieux préparer votre parcours"
@@ -79,6 +80,6 @@ export default async function BlogPage() {
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 }

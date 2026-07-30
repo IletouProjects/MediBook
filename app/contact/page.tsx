@@ -9,6 +9,7 @@ import { ContactApiResponse, ContactFormData } from "../types/contact";
 
 
 
+
 const initialFormData: ContactFormData = {
   name: "",
   email: "",
@@ -114,8 +115,7 @@ export default function ContactPage() {
           </p>
         </div>
       </section>
-
-      <section className="py-20 lg:py-24">
+       <section className="py-20 lg:py-24">
         <div className="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#FF6B1A]">

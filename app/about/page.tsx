@@ -3,10 +3,16 @@ import Link from "next/link";
 import SectionLabel from "../components/SectionLabel";
 import PageHero from "../components/PageHero";
 
+// export const metadata: Metadata = {
+//   title: "À propos",
+//   description:
+//     "Découvrez la mission, les principes et la vision de MediBook.",
+// };
+
 export const metadata: Metadata = {
   title: "À propos",
   description:
-    "Découvrez la mission, les principes et la vision de MediBook.",
+    "Découvrez la mission de MediBook et son approche pour simplifier l’accès aux professionnels de santé.",
 };
 
 const principles = [
@@ -32,7 +38,7 @@ const principles = [
 
 export default function AboutPage() {
   return (
-    <>
+    <main>
       <PageHero
         label="À propos"
         title="Faciliter l’accès à une consultation médicale"
@@ -126,6 +132,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 }
