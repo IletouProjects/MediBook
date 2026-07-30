@@ -19,12 +19,21 @@ function logFetchError(error: unknown): void {
 export async function getPosts(): Promise<Post[]> {
   try {
     const response = await fetch(API_URL, {
-      cache: "no-store",
-      headers: {
+  next: {
+    revalidate: 3600,
+  },
+   headers: {
         Accept: "application/json",
       },
       signal: AbortSignal.timeout(10_000),
-    });
+});
+    // const response = await fetch(API_URL, {
+    //   cache: "no-store",
+    //   headers: {
+    //     Accept: "application/json",
+    //   },
+    //   signal: AbortSignal.timeout(10_000),
+    // });
 
     if (!response.ok) {
       throw new Error(`Erreur HTTP ${response.status}`);
