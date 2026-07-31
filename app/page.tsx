@@ -3,7 +3,6 @@ import SectionLabel from "./components/SectionLabel";
 import type { Metadata } from "next";
 import Image from "next/image";
 
-
 const appointmentSteps = [
   {
     number: "01",
@@ -55,8 +54,6 @@ const specialties = [
   "Ophtalmologie",
 ];
 
-
-
 export const metadata: Metadata = {
   title: "Rendez-vous médicaux en ligne",
   description:
@@ -68,44 +65,40 @@ export default function HomePage() {
     <main>
       {/* HERO */}
       <section className="overflow-hidden bg-white">
-        <div className="mx-auto grid min-h-[700px] max-w-7xl items-center gap-14 px-5 py-16 lg:grid-cols-[1fr_1fr] lg:px-8 lg:py-20">
+        <div className="mx-auto grid min-h-auto max-w-7xl items-center gap-10 px-4 py-10 sm:px-5 sm:py-14 lg:min-h-[700px] lg:grid-cols-[1fr_1fr] lg:gap-14 lg:px-8 lg:py-20">
           {/* Partie gauche */}
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#E9E9E9] bg-white px-4 py-2 shadow-[0_5px_18px_rgba(0,0,0,0.07)]">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#E9E9E9] bg-white px-3 py-1.5 shadow-[0_5px_18px_rgba(0,0,0,0.07)] sm:px-4 sm:py-2">
               <span
                 aria-hidden="true"
-                className="h-2 w-2 rounded-full bg-[#FF6B1A]"
+                className="h-1.5 w-1.5 rounded-full bg-[#FF6B1A] sm:h-2 sm:w-2"
               />
 
-              <span className="text-sm font-medium text-[#555555]">
+              <span className="text-[11px] font-medium text-[#555555] sm:text-sm">
                 Une consultation plus simple à organiser
               </span>
             </div>
 
-            <h1 className="mt-8 max-w-3xl text-4xl font-semibold leading-[1.08] tracking-[-0.045em] text-[#111111] sm:text-5xl lg:text-6xl">
+            <h1 className="mt-6 max-w-3xl text-3xl font-semibold leading-[1.12] tracking-[-0.04em] text-[#111111] sm:mt-8 sm:text-5xl lg:text-6xl">
               Trouvez plus facilement
-              <span className="text-[#FF6B1A]">
-                {" "}
-                le professionnel
-              </span>{" "}
-              adapté à votre besoin.
+              <span className="text-[#FF6B1A]"> le professionnel</span> adapté à
+              votre besoin.
             </h1>
 
-            <p className="mt-6 max-w-xl text-base leading-8 text-[#626262]">
+            <p className="mt-4 max-w-xl text-sm leading-6 text-[#626262] sm:mt-6 sm:text-base sm:leading-8">
               Recherchez une spécialité, consultez les disponibilités et
               organisez votre rendez-vous sans appel ni déplacement inutile.
             </p>
 
-            <div className="mt-9 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-6 flex flex-wrap gap-3 sm:mt-9 sm:gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-3 rounded-full bg-[#FF6B1A] px-7 py-3 font-semibold text-white shadow-[0_10px_25px_rgba(255,107,26,0.28)] hover:bg-[#E95D0D]"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#FF6B1A] px-4 py-2.5 text-xs font-semibold text-white shadow-[0_8px_20px_rgba(255,107,26,0.24)] hover:bg-[#E95D0D] sm:gap-3 sm:px-7 sm:py-3 sm:text-base"
               >
                 Prendre rendez-vous
-
                 <span
                   aria-hidden="true"
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-lg text-[#FF6B1A]"
+                  className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-sm text-[#FF6B1A] sm:h-9 sm:w-9 sm:text-lg"
                 >
                   →
                 </span>
@@ -113,30 +106,36 @@ export default function HomePage() {
 
               <Link
                 href="/services"
-                className="inline-flex items-center justify-center rounded-full border border-[#DCDCDC] bg-white px-7 py-4 font-semibold text-[#111111] hover:border-[#111111]"
+                className="inline-flex items-center justify-center rounded-full border border-[#DCDCDC] bg-white px-4 py-2.5 text-xs font-semibold text-[#111111] hover:border-[#111111] sm:px-7 sm:py-4 sm:text-base"
               >
                 Découvrir les services
               </Link>
             </div>
 
-            <div className="mt-14 grid max-w-xl gap-6 border-t border-[#E9E9E9] pt-8 sm:grid-cols-3">
+            <div className="mt-10 grid gap-5 border-t border-[#E9E9E9] pt-6 sm:mt-14 sm:grid-cols-3 sm:gap-6 sm:pt-8">
               <div>
-                <p className="font-semibold text-[#111111]">Accessible</p>
-                <p className="mt-2 text-sm leading-6 text-[#626262]">
+                <p className="text-sm font-semibold text-[#111111] sm:text-base">
+                  Accessible
+                </p>
+                <p className="mt-1 text-xs leading-5 text-[#626262] sm:mt-2 sm:text-sm sm:leading-6">
                   Depuis un téléphone, une tablette ou un ordinateur.
                 </p>
               </div>
 
               <div>
-                <p className="font-semibold text-[#111111]">Compréhensible</p>
-                <p className="mt-2 text-sm leading-6 text-[#626262]">
+                <p className="text-sm font-semibold text-[#111111] sm:text-base">
+                  Compréhensible
+                </p>
+                <p className="mt-1 text-xs leading-5 text-[#626262] sm:mt-2 sm:text-sm sm:leading-6">
                   Des étapes courtes et clairement expliquées.
                 </p>
               </div>
 
               <div>
-                <p className="font-semibold text-[#111111]">Rassurant</p>
-                <p className="mt-2 text-sm leading-6 text-[#626262]">
+                <p className="text-sm font-semibold text-[#111111] sm:text-base">
+                  Rassurant
+                </p>
+                <p className="mt-1 text-xs leading-5 text-[#626262] sm:mt-2 sm:text-sm sm:leading-6">
                   Les informations utiles avant la validation.
                 </p>
               </div>
@@ -144,35 +143,34 @@ export default function HomePage() {
           </div>
 
           {/* Partie droite */}
-          <div className="relative min-h-[620px]">
+          <div className="relative min-h-[500px] sm:min-h-[560px] lg:min-h-[620px]">
             <div
               aria-hidden="true"
-              className="absolute inset-x-16 bottom-8 h-24 rounded-full bg-black/10 blur-3xl"
+              className="absolute inset-x-10 bottom-8 h-20 rounded-full bg-black/10 blur-3xl sm:inset-x-16 sm:h-24"
             />
 
-            {/* Carte principale */}
-            <div className="absolute left-1/2 top-1/2 z-10 w-full max-w-[470px] -translate-x-1/2 -translate-y-1/2 rounded-[2.5rem] border border-[#EAEAEA] bg-[#FAFAF8] p-6 shadow-[0_30px_70px_rgba(0,0,0,0.13)]">
-              <div className="rounded-[2rem] bg-white p-7">
-                <div className="border-b border-[#EEEEEE] pb-6">
-                  <p className="mb-2 text-sm font-semibold text-[#FF6B1A]">
+            <div className="absolute left-1/2 top-1/2 z-10 w-full max-w-[390px] -translate-x-1/2 -translate-y-1/2 rounded-[1.75rem] border border-[#EAEAEA] bg-[#FAFAF8] p-4 shadow-[0_20px_50px_rgba(0,0,0,0.1)] sm:max-w-[470px] sm:rounded-[2.5rem] sm:p-6 sm:shadow-[0_30px_70px_rgba(0,0,0,0.13)]">
+              <div className="rounded-[1.4rem] bg-white p-5 sm:rounded-[2rem] sm:p-7">
+                <div className="border-b border-[#EEEEEE] pb-4 sm:pb-6">
+                  <p className="text-xs font-semibold text-[#FF6B1A] sm:text-sm">
                     Nouvelle réservation
                   </p>
 
-                  <h2 className="mt-2 text-2xl font-semibold text-[#111111]">
+                  <h2 className="mt-2 text-xl font-semibold text-[#111111] sm:mt-3 sm:text-2xl">
                     Trouver une consultation
                   </h2>
 
-                  <p className="mt-3 text-sm leading-6 text-[#626262]">
+                  <p className="mt-2 text-xs leading-5 text-[#626262] sm:mt-3 sm:text-sm sm:leading-6">
                     Renseignez quelques informations pour afficher les créneaux
                     disponibles.
                   </p>
                 </div>
 
-                <form className="mt-5 space-y-5">
+                <form className="mt-5 space-y-4 sm:mt-7 sm:space-y-5">
                   <div>
                     <label
                       htmlFor="speciality"
-                      className="mb-2 block text-sm font-medium text-[#222222]"
+                      className="mb-1.5 block text-xs font-medium text-[#222222] sm:mb-2 sm:text-sm"
                     >
                       Spécialité
                     </label>
@@ -181,7 +179,7 @@ export default function HomePage() {
                       id="speciality"
                       name="speciality"
                       defaultValue=""
-                      className="w-full rounded-xl border border-[#E2E2E2] bg-white px-4 py-4 text-[#555555] outline-none focus:border-[#FF6B1A] focus:ring-4 focus:ring-orange-50"
+                      className="w-full rounded-xl border border-[#E2E2E2] bg-white px-3 py-3 text-xs text-[#555555] outline-none focus:border-[#FF6B1A] focus:ring-4 focus:ring-orange-50 sm:px-4 sm:py-4 sm:text-sm"
                     >
                       <option value="" disabled>
                         Sélectionner une spécialité
@@ -198,7 +196,7 @@ export default function HomePage() {
                   <div>
                     <label
                       htmlFor="location"
-                      className="mb-2 block text-sm font-medium text-[#222222]"
+                      className="mb-1.5 block text-xs font-medium text-[#222222] sm:mb-2 sm:text-sm"
                     >
                       Ville ou quartier
                     </label>
@@ -208,14 +206,14 @@ export default function HomePage() {
                       name="location"
                       type="text"
                       placeholder="Exemple : Lomé, Tokoin"
-                      className="w-full rounded-xl border border-[#E2E2E2] px-4 py-4 text-[#555555] outline-none placeholder:text-[#A0A0A0] focus:border-[#FF6B1A] focus:ring-4 focus:ring-orange-50"
+                      className="w-full rounded-xl border border-[#E2E2E2] px-3 py-3 text-xs text-[#555555] outline-none placeholder:text-[#A0A0A0] focus:border-[#FF6B1A] focus:ring-4 focus:ring-orange-50 sm:px-4 sm:py-4 sm:text-sm"
                     />
                   </div>
 
                   <div>
                     <label
                       htmlFor="appointment-date"
-                      className="mb-2 block text-sm font-medium text-[#222222]"
+                      className="mb-1.5 block text-xs font-medium text-[#222222] sm:mb-2 sm:text-sm"
                     >
                       Date souhaitée
                     </label>
@@ -224,13 +222,13 @@ export default function HomePage() {
                       id="appointment-date"
                       name="appointmentDate"
                       type="date"
-                      className="w-full rounded-xl border border-[#E2E2E2] px-4 py-4 text-[#555555] outline-none focus:border-[#FF6B1A] focus:ring-4 focus:ring-orange-50"
+                      className="w-full rounded-xl border border-[#E2E2E2] px-3 py-3 text-xs text-[#555555] outline-none focus:border-[#FF6B1A] focus:ring-4 focus:ring-orange-50 sm:px-4 sm:py-4 sm:text-sm"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full rounded-full bg-[#111111] px-5 py-4 font-semibold text-white hover:bg-[#2A2A2A]"
+                    className="w-full rounded-full bg-[#111111] px-4 py-3 text-xs font-semibold text-white hover:bg-[#2A2A2A] sm:px-5 sm:py-4 sm:text-base"
                   >
                     Rechercher les disponibilités
                   </button>
@@ -239,8 +237,8 @@ export default function HomePage() {
             </div>
 
             {/* Miniature photo */}
-            <div className="absolute right-0 top-8 z-20 hidden w-[175px] overflow-hidden rounded-3xl border-[6px] border-white bg-white shadow-[0_16px_40px_rgba(0,0,0,0.16)] sm:block">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[18px] bg-[#FFF1E8]">
+            <div className="absolute right-0 top-8 z-20 hidden w-[150px] overflow-hidden rounded-3xl border-[5px] border-white bg-white shadow-[0_14px_34px_rgba(0,0,0,0.15)] md:block lg:w-[175px] lg:border-[6px]">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[16px] bg-[#FFF1E8] lg:rounded-[18px]">
                 <Image
                   src="/images/doctor1.jpg"
                   alt="Médecin échangeant avec une patiente"
@@ -251,29 +249,26 @@ export default function HomePage() {
                 />
               </div>
 
-              <div className="px-4 py-3">
-                <p className="text-xs font-semibold text-[#111111]">
+              <div className="px-3 py-2.5 lg:px-4 lg:py-3">
+                <p className="text-[10px] font-semibold text-[#111111] lg:text-xs">
                   Accompagnement médical
                 </p>
 
-                <p className="mt-1 text-[11px] leading-4 text-[#777777]">
+                <p className="mt-1 text-[9px] leading-4 text-[#777777] lg:text-[11px]">
                   Une prise en charge plus accessible.
                 </p>
               </div>
             </div>
 
-            {/* Badge supérieur gauche */}
-            <div className="absolute left-0 top-16 z-20 hidden rounded-full border border-[#E9E9E9] bg-white px-4 py-3 text-sm font-medium text-[#333333] shadow-[0_8px_22px_rgba(0,0,0,0.1)] sm:block">
+            <div className="absolute left-0 top-16 z-20 hidden rounded-full border border-[#E9E9E9] bg-white px-3 py-2 text-xs font-medium text-[#333333] shadow-[0_8px_20px_rgba(0,0,0,0.09)] md:block lg:px-4 lg:py-3 lg:text-sm">
               Professionnels disponibles
             </div>
 
-            {/* Badge inférieur gauche */}
-            <div className="absolute bottom-20 left-0 z-20 hidden rounded-full border border-[#E9E9E9] bg-white px-4 py-3 text-sm font-medium text-[#333333] shadow-[0_8px_22px_rgba(0,0,0,0.1)] sm:block">
+            <div className="absolute bottom-20 left-0 z-20 hidden rounded-full border border-[#E9E9E9] bg-white px-3 py-2 text-xs font-medium text-[#333333] shadow-[0_8px_20px_rgba(0,0,0,0.09)] md:block lg:px-4 lg:py-3 lg:text-sm">
               Réservation guidée
             </div>
 
-            {/* Badge inférieur droit */}
-            <div className="absolute bottom-10 right-0 z-20 hidden rounded-full border border-[#E9E9E9] bg-white px-4 py-3 text-sm font-medium text-[#333333] shadow-[0_8px_22px_rgba(0,0,0,0.1)] lg:block">
+            <div className="absolute bottom-10 right-0 z-20 hidden rounded-full border border-[#E9E9E9] bg-white px-3 py-2 text-xs font-medium text-[#333333] shadow-[0_8px_20px_rgba(0,0,0,0.09)] lg:block lg:px-4 lg:py-3 lg:text-sm">
               Accessible sur mobile
             </div>
           </div>
@@ -316,10 +311,7 @@ export default function HomePage() {
                     {step.number}
                   </span>
 
-                  <span
-                    aria-hidden="true"
-                    className="h-px w-12 bg-[#E4E4E4]"
-                  />
+                  <span aria-hidden="true" className="h-px w-12 bg-[#E4E4E4]" />
                 </div>
 
                 <h3 className="mt-10 text-xl font-semibold text-[#111111]">
@@ -533,7 +525,6 @@ export default function HomePage() {
                 className="inline-flex shrink-0 items-center gap-3 rounded-full bg-[#FF6B1A] px-7 py-3 font-semibold text-white hover:bg-[#E95D0D]"
               >
                 Prendre rendez-vous
-
                 <span
                   aria-hidden="true"
                   className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#FF6B1A]"

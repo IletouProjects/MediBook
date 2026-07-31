@@ -25,32 +25,34 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="sticky bottom-0 z-40 border-t border-white/10 bg-[#111111] text-white">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 px-5 py-5 sm:flex-row lg:px-8">
-        <div className="flex items-center gap-5">
-          <Logo light />
+    <footer className="border-t border-white/10 bg-[#111111] text-white">
+      <div className="mx-auto flex max-w-7xl flex-col gap-5 px-4 py-6 sm:px-5 md:flex-row md:items-center md:justify-between lg:px-8">
+        <div>
+          <p className="text-base font-semibold sm:text-lg">
+            Medi<span className="text-[#FF6B1A]">Book</span>
+          </p>
 
-          <p className="hidden text-sm text-[#A8A8A8] lg:block">
+          <p className="mt-1 text-xs leading-5 text-[#A8A8A8] sm:text-sm">
             La prise de rendez-vous médical, simplement.
           </p>
         </div>
 
         <nav
           aria-label="Navigation du pied de page"
-          className="flex items-center gap-5"
+          className="flex flex-wrap gap-x-4 gap-y-2"
         >
           {footerLinks.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm text-[#B8B8B8] hover:text-white"
+              className="text-xs text-[#B8B8B8] transition hover:text-white sm:text-sm"
             >
               {item.label}
             </Link>
           ))}
         </nav>
 
-        <p className="text-center text-xs text-[#8D8D8D] sm:text-right">
+        <p className="text-xs text-[#8D8D8D]">
           © {currentYear} MediBook
         </p>
       </div>

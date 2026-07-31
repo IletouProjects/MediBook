@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MediBook
 
-## Getting Started
+MediBook est une application web de réservation médicale développée avec **Next.js 16**, **TypeScript** et **Tailwind CSS**. Elle propose une interface moderne, responsive et optimisée permettant de simplifier la prise de rendez-vous avec un professionnel de santé.
 
-First, run the development server:
+## Démonstration
+
+- **Application :** [https://medi-book-cg9m.vercel.app/]
+- **Code source :** [(https://github.com/IletouProjects/MediBook)]
+- **Rapport Lighthouse :** [(https://lighthouse-metrics.com/lighthouse/checks/b7afb3c2-b38b-4b8f-96d5-d48f2f5252f3)]
+
+## Performances
+
+| Indicateur | Score |
+|------------|:-----:|
+| Performance | 94/100 |
+| Accessibilité | 96/100 |
+| Bonnes pratiques | 100/100 |
+| SEO | 100/100 |
+
+## Fonctionnalités
+
+- Interface responsive
+- Navigation avec App Router
+- Blog avec Server Components
+- Pages dynamiques
+- États de chargement et gestion des erreurs
+- API de contact avec Route Handlers
+- Optimisation SEO (Metadata API)
+- Optimisation des images avec `next/image`
+- Déploiement sur Vercel
+
+## Technologies
+
+- Next.js 16
+- React
+- TypeScript
+- Tailwind CSS
+- Vercel
+
+## Installation
 
 ```bash
+git clone (https://github.com/IletouProjects/MediBook)
+cd medical-booking
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+L'application sera accessible à l'adresse :
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
+```production
+https://medi-book-cg9m.vercel.app/
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Auteur
 
-## Learn More
+**Abla Edith Ilétou FANGBEMI**
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Projet réalisé dans le cadre du challenge de développement de **Les Pros de la Tech** Cohorte2.
