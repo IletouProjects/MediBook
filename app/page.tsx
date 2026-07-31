@@ -55,6 +55,8 @@ const specialties = [
   "Ophtalmologie",
 ];
 
+
+
 export const metadata: Metadata = {
   title: "Rendez-vous médicaux en ligne",
   description:
@@ -65,60 +67,214 @@ export default function HomePage() {
   return (
     <main>
       {/* HERO */}
-      <section className="overflow-hidden border-b border-[#E9E9E9] bg-white">
-        <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 py-20 lg:grid-cols-2 lg:px-8 lg:py-28">
+      <section className="overflow-hidden bg-white">
+        <div className="mx-auto grid min-h-[700px] max-w-7xl items-center gap-14 px-5 py-16 lg:grid-cols-[1fr_1fr] lg:px-8 lg:py-20">
+          {/* Partie gauche */}
           <div>
-            <div className="inline-flex items-center rounded-full bg-[#FFF1E8] px-4 py-2 text-sm font-semibold text-[#E95D0D]">
-              Votre santé, plus accessible
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#E9E9E9] bg-white px-4 py-2 shadow-[0_5px_18px_rgba(0,0,0,0.07)]">
+              <span
+                aria-hidden="true"
+                className="h-2 w-2 rounded-full bg-[#FF6B1A]"
+              />
+
+              <span className="text-sm font-medium text-[#555555]">
+                Une consultation plus simple à organiser
+              </span>
             </div>
 
-            <h1 className="mt-7 text-4xl font-semibold tracking-[-0.05em] text-[#111111] sm:text-5xl lg:text-6xl">
-              Prenez soin de votre santé sans perdre de temps.
+            <h1 className="mt-8 max-w-3xl text-4xl font-semibold leading-[1.08] tracking-[-0.045em] text-[#111111] sm:text-5xl lg:text-6xl">
+              Trouvez plus facilement
+              <span className="text-[#FF6B1A]">
+                {" "}
+                le professionnel
+              </span>{" "}
+              adapté à votre besoin.
             </h1>
 
-            <p className="mt-6 max-w-xl text-lg leading-8 text-[#626262]">
-              Recherchez un professionnel, consultez ses
-              disponibilités et planifiez votre rendez-vous
-              depuis une interface simple et rassurante.
+            <p className="mt-6 max-w-xl text-base leading-8 text-[#626262]">
+              Recherchez une spécialité, consultez les disponibilités et
+              organisez votre rendez-vous sans appel ni déplacement inutile.
             </p>
 
-            <div className="mt-9 flex flex-wrap gap-4">
+            <div className="mt-9 flex flex-col gap-4 sm:flex-row">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-3 rounded-full bg-[#FF6B1A] px-7 py-3 font-semibold text-white shadow-[0_10px_25px_rgba(255,107,26,0.28)] hover:bg-[#E95D0D]"
+              >
+                Prendre rendez-vous
+
+                <span
+                  aria-hidden="true"
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-lg text-[#FF6B1A]"
+                >
+                  →
+                </span>
+              </Link>
+
               <Link
                 href="/services"
-                className="rounded-full bg-[#FF6B1A] px-6 py-3 font-semibold text-white transition hover:bg-[#E95D0D]"
+                className="inline-flex items-center justify-center rounded-full border border-[#DCDCDC] bg-white px-7 py-4 font-semibold text-[#111111] hover:border-[#111111]"
               >
                 Découvrir les services
               </Link>
+            </div>
 
-              <Link
-                href="/contact"
-                className="rounded-full border border-[#DADADA] bg-white px-6 py-3 font-semibold text-[#111111] transition hover:border-[#111111]"
-              >
-                Nous contacter
-              </Link>
+            <div className="mt-14 grid max-w-xl gap-6 border-t border-[#E9E9E9] pt-8 sm:grid-cols-3">
+              <div>
+                <p className="font-semibold text-[#111111]">Accessible</p>
+                <p className="mt-2 text-sm leading-6 text-[#626262]">
+                  Depuis un téléphone, une tablette ou un ordinateur.
+                </p>
+              </div>
+
+              <div>
+                <p className="font-semibold text-[#111111]">Compréhensible</p>
+                <p className="mt-2 text-sm leading-6 text-[#626262]">
+                  Des étapes courtes et clairement expliquées.
+                </p>
+              </div>
+
+              <div>
+                <p className="font-semibold text-[#111111]">Rassurant</p>
+                <p className="mt-2 text-sm leading-6 text-[#626262]">
+                  Les informations utiles avant la validation.
+                </p>
+              </div>
             </div>
           </div>
 
-          <div className="relative">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-[32px] bg-[#FFF1E8] shadow-[0_24px_80px_rgba(17,17,17,0.12)]">
-              <Image
-                src="/images/doctor1.jpg"
-                alt="Médecin échangeant avec une patiente lors d’une consultation"
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
-               className="object-cover"
-              />
+          {/* Partie droite */}
+          <div className="relative min-h-[620px]">
+            <div
+              aria-hidden="true"
+              className="absolute inset-x-16 bottom-8 h-24 rounded-full bg-black/10 blur-3xl"
+            />
+
+            {/* Carte principale */}
+            <div className="absolute left-1/2 top-1/2 z-10 w-full max-w-[470px] -translate-x-1/2 -translate-y-1/2 rounded-[2.5rem] border border-[#EAEAEA] bg-[#FAFAF8] p-6 shadow-[0_30px_70px_rgba(0,0,0,0.13)]">
+              <div className="rounded-[2rem] bg-white p-7">
+                <div className="border-b border-[#EEEEEE] pb-6">
+                  <p className="mb-2 text-sm font-semibold text-[#FF6B1A]">
+                    Nouvelle réservation
+                  </p>
+
+                  <h2 className="mt-2 text-2xl font-semibold text-[#111111]">
+                    Trouver une consultation
+                  </h2>
+
+                  <p className="mt-3 text-sm leading-6 text-[#626262]">
+                    Renseignez quelques informations pour afficher les créneaux
+                    disponibles.
+                  </p>
+                </div>
+
+                <form className="mt-5 space-y-5">
+                  <div>
+                    <label
+                      htmlFor="speciality"
+                      className="mb-2 block text-sm font-medium text-[#222222]"
+                    >
+                      Spécialité
+                    </label>
+
+                    <select
+                      id="speciality"
+                      name="speciality"
+                      defaultValue=""
+                      className="w-full rounded-xl border border-[#E2E2E2] bg-white px-4 py-4 text-[#555555] outline-none focus:border-[#FF6B1A] focus:ring-4 focus:ring-orange-50"
+                    >
+                      <option value="" disabled>
+                        Sélectionner une spécialité
+                      </option>
+
+                      {specialties.map((specialty) => (
+                        <option key={specialty} value={specialty}>
+                          {specialty}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="location"
+                      className="mb-2 block text-sm font-medium text-[#222222]"
+                    >
+                      Ville ou quartier
+                    </label>
+
+                    <input
+                      id="location"
+                      name="location"
+                      type="text"
+                      placeholder="Exemple : Lomé, Tokoin"
+                      className="w-full rounded-xl border border-[#E2E2E2] px-4 py-4 text-[#555555] outline-none placeholder:text-[#A0A0A0] focus:border-[#FF6B1A] focus:ring-4 focus:ring-orange-50"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="appointment-date"
+                      className="mb-2 block text-sm font-medium text-[#222222]"
+                    >
+                      Date souhaitée
+                    </label>
+
+                    <input
+                      id="appointment-date"
+                      name="appointmentDate"
+                      type="date"
+                      className="w-full rounded-xl border border-[#E2E2E2] px-4 py-4 text-[#555555] outline-none focus:border-[#FF6B1A] focus:ring-4 focus:ring-orange-50"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full rounded-full bg-[#111111] px-5 py-4 font-semibold text-white hover:bg-[#2A2A2A]"
+                  >
+                    Rechercher les disponibilités
+                  </button>
+                </form>
+              </div>
             </div>
 
-            <div className="absolute -bottom-5 left-5 rounded-2xl border border-[#E9E9E9] bg-white p-5 shadow-xl">
-              <p className="text-sm font-semibold text-[#111111]">
-                Rendez-vous confirmé
-              </p>
+            {/* Miniature photo */}
+            <div className="absolute right-0 top-8 z-20 hidden w-[175px] overflow-hidden rounded-3xl border-[6px] border-white bg-white shadow-[0_16px_40px_rgba(0,0,0,0.16)] sm:block">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[18px] bg-[#FFF1E8]">
+                <Image
+                  src="/images/doctor1.jpg"
+                  alt="Médecin échangeant avec une patiente"
+                  fill
+                  priority
+                  sizes="175px"
+                  className="object-cover object-center"
+                />
+              </div>
 
-              <p className="mt-1 text-sm text-[#626262]">
-                Médecine générale · 14 h 30
-              </p>
+              <div className="px-4 py-3">
+                <p className="text-xs font-semibold text-[#111111]">
+                  Accompagnement médical
+                </p>
+
+                <p className="mt-1 text-[11px] leading-4 text-[#777777]">
+                  Une prise en charge plus accessible.
+                </p>
+              </div>
+            </div>
+
+            {/* Badge supérieur gauche */}
+            <div className="absolute left-0 top-16 z-20 hidden rounded-full border border-[#E9E9E9] bg-white px-4 py-3 text-sm font-medium text-[#333333] shadow-[0_8px_22px_rgba(0,0,0,0.1)] sm:block">
+              Professionnels disponibles
+            </div>
+
+            {/* Badge inférieur gauche */}
+            <div className="absolute bottom-20 left-0 z-20 hidden rounded-full border border-[#E9E9E9] bg-white px-4 py-3 text-sm font-medium text-[#333333] shadow-[0_8px_22px_rgba(0,0,0,0.1)] sm:block">
+              Réservation guidée
+            </div>
+
+            {/* Badge inférieur droit */}
+            <div className="absolute bottom-10 right-0 z-20 hidden rounded-full border border-[#E9E9E9] bg-white px-4 py-3 text-sm font-medium text-[#333333] shadow-[0_8px_22px_rgba(0,0,0,0.1)] lg:block">
+              Accessible sur mobile
             </div>
           </div>
         </div>
